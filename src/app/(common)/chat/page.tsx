@@ -8,6 +8,7 @@ import { MobileScreen } from '@/components/mobile-screen';
 import { Button } from '@/components/ui/button';
 import type { ChatMessage } from '@/lib/aurelia-knowledge';
 import { cn } from '@/lib/utils';
+import { useRouter } from 'next/navigation';
 
 const INITIAL_MESSAGE: ChatMessage = {
   role: 'assistant',
@@ -19,6 +20,7 @@ export default function ChatPage() {
   const [messages, setMessages] = useState<ChatMessage[]>([INITIAL_MESSAGE]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter()
   const [error, setError] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -85,7 +87,7 @@ export default function ChatPage() {
 
   return (
     <MobileScreen>
-      <MobileHeader title="Ask Aurelia" backHref="/explore" />
+      <MobileHeader title="Ask Aurelia" onBack={() => router.back()} />
 
       <div
         ref={scrollRef}

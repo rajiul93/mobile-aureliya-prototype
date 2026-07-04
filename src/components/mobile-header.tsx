@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { ChevronLeft } from 'lucide-react';
 
@@ -6,6 +8,7 @@ import { cn } from '@/lib/utils';
 type MobileHeaderProps = {
   title?: string;
   backHref?: string;
+  onBack?: () => void;
   rightAction?: React.ReactNode;
   className?: string;
 };
@@ -13,17 +16,30 @@ type MobileHeaderProps = {
 export function MobileHeader({
   title,
   backHref,
+  onBack,
   rightAction,
   className,
 }: MobileHeaderProps) {
+  const backButtonClassName =
+    'flex size-8 items-center justify-center text-primary';
+
   return (
     <header
       className={cn('flex items-center gap-2 px-6 pt-8 pb-4', className)}
     >
-      {backHref ? (
+      {onBack ? (
+        <button
+          type="button"
+          onClick={onBack}
+          className={backButtonClassName}
+          aria-label="Go back"
+        >
+          <ChevronLeft className="size-6" />
+        </button>
+      ) : backHref ? (
         <Link
           href={backHref}
-          className="flex size-8 items-center justify-center text-primary"
+          className={backButtonClassName}
           aria-label="Go back"
         >
           <ChevronLeft className="size-6" />

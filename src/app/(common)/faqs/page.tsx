@@ -12,7 +12,8 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { MobileHeader } from '@/components/mobile-header';
-import { MobileScreen } from '@/components/mobile-screen';
+import { MobileScreen } from '@/components/mobile-screen'; 
+import { useRouter } from 'next/navigation';
 
 const categories = [
   'All',
@@ -75,6 +76,7 @@ const faqs = [
 export default function FAQPage() {
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('All');
+  const router = useRouter()
 
   const filteredFaqs = useMemo(() => {
     return faqs.filter((faq) => {
@@ -90,7 +92,10 @@ export default function FAQPage() {
 
   return (
     <MobileScreen>
-      <MobileHeader title="Frequently Asked Questions" backHref="/" />
+      <MobileHeader
+        title="Frequently Asked Questions"
+        onBack={() => router.back()}
+      />
 
       <div className="space-y-4 px-6 pb-6">
         {/* Search */}
