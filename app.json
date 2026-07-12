@@ -1,0 +1,8 @@
+{
+  "android": {
+    "package": "com.rajiul.aurelia"
+  },
+  "ios": {
+    "bundleIdentifier": "com.rajiul.aurelia"
+  }
+}

@@ -92,15 +92,6 @@ const router = useRouter()
               <IoPricetagsOutline className="mr-2 h-4 w-4" />
               Plans
             </Button>
-
-            <Button
-              variant="outline"
-              onClick={()=>router.push('/explore')}
-              className="h-11 rounded-xl border-white/10 bg-white/5 text-white hover:bg-white/10"
-            >
-              <FcGoogle className="mr-2 h-4 w-4" />
-              Google
-            </Button>
           </div>
         </div>
 
